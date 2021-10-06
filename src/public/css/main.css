@@ -1,0 +1,12 @@
+.container-main {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.hiddenForm {
+    margin: 0;
+}
+
+.navbar-principal {
+    border-bottom: 1px solid rgba(179, 179, 179, 0.5);
+}

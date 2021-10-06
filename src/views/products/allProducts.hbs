@@ -1,0 +1,56 @@
+{{#if products}}
+<div class='columns is-multiline is-mobile'></div>
+    {{#each products}}
+        <div class='column is-12-mobile is-6-tablet is-3-desktop'>
+            <div class='card'>
+                <div class='card-image'>
+                    <figure class='image is-4by3'>
+                        <img
+                            src='https://bulma.io/images/placeholders/1280x960.png'
+                            alt='Placeholder image'
+                        />
+                    </figure>
+                </div>
+                <div class='card-content'>
+                    <div class='media'>
+                        <div class='media-content'>
+                            <p class='title is-4'>{{name}}</p>
+                        </div>
+                    </div>
+
+                    <div class='content'>
+                        ${{price}}
+                        <br />
+                        {{description}}
+                        {{!-- <br />
+                        <time datetime='2016-1-1'>{{date}}</time> --}}
+                        {{!-- <br> --}}
+                        <div class="buttons is-right">
+                            <form action="/products/delete/{{_id}}?_method=DELETE" method="POST" class="hiddenForm">
+                                <input type="hidden" value="DELETE" name="_method">
+                                <button type="submit" class="button is-danger is-small ">Eliminar</button>
+                            </form>
+                            <a href="/products/edit/{{_id}}" class="button is-info is-small is-pulled-right">Editar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="columns is-centered">
+    <div class='column is-narrow'>
+        <div class='card'>
+            <div class='card-content'>
+                <div class='media'>
+                    <div class='media-content has-text-centered'>
+                        <p class='title is-4'>No tienes productos aun</p>
+                        <a href='/products/addProduct' class='button is-primary is-outlined' >Agregar producto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
