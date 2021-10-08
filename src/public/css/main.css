@@ -10,3 +10,46 @@
 .navbar-principal {
     border-bottom: 1px solid rgba(179, 179, 179, 0.5);
 }
+
+.index-box {
+    background-image: url('../images/header.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+footer  i {
+    margin: 2rem 2rem;
+}
+
+.is-blue {
+    background-color: #0CCDE8;
+    color:#fff;
+}
+
+.is-blue:hover {
+    background-color: #13cae2;
+}
+
+.img-index {
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    max-width: 400px;
+}
+
+.img-index > img {
+    border-radius: 10px;
+}
+
+.card-image > figure {
+    height: 230px;
+}
+
+.card-image > figure > img {
+    height: auto;
+    width: auto;
+    max-height: 230px;
+}

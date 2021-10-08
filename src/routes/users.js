@@ -5,7 +5,7 @@ const router = express.Router()
 const User = require('../models/User')
 
 router.get('/signin', (req, res) => {
-    res.render('users/signin')
+    res.render('users/signin', { id:req.userId })
 })
 
 router.post('/signin', passport.authenticate('local', {
@@ -34,6 +34,11 @@ router.post('/signup', async (req, res) => {
     await newUser.save()
 
     res.redirect('/users/signin')
+})
+
+router.get('/logout', (req, res) => {
+    req.logOut()
+    res.redirect('/')
 })
 
 module.exports = router;

@@ -16,9 +16,20 @@ const ProductSchema = new Schema({
     description: {
         type: String,
     },
+    stock: {
+        type: Number,
+    },
+    imagePath : {
+        type: String,
+        required: true,
+    },
     date: {
         type: Date,
         default: today.format("YYYY-MM-DD"),
+    },
+    userId: {
+        type: String,
+        required: true,
     },
 });
 

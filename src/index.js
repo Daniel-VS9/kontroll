@@ -30,11 +30,19 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use((req, res, next) => {
+    (req.user && req.user._id) ? req.userId = JSON.stringify(req.user._id).slice(1, -1) : req.userId = null
+    // console.log(req.userId)
+    next()
+})
+
 
 //Routes
 app.use('/', require('./routes/index'))
 app.use('/products', require('./routes/products'))
 app.use('/users', require('./routes/users'))
+app.use('/store', require('./routes/store'))
+app.use('/orders', require('./routes/orders'))
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')))

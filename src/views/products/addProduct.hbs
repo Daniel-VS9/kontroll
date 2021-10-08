@@ -1,5 +1,5 @@
 <div class="columns is-centered">
-    <div class="column is-4">
+    <div class="column is-8-tablet is-5-desktop is-4-widescreen">
 
         <div class="box">
             {{!-- {{#each errors}}
@@ -13,7 +13,7 @@
 
             <h3 class="subtitle is-2">Crear producto</h3>
 
-            <form action="/products/addProduct" method="POST">
+            <form action="/products/addProduct" method="POST" enctype="multipart/form-data">
                 <div class="field">
                     <label class="label">Nombre</label>
                     <div class="control">
@@ -24,7 +24,7 @@
                 <div class="field">
                     <label class="label">Precio</label>
                     <div class="control">
-                        <input name='price' class="input" type="text" placeholder="10000" autofocus>
+                        <input name='price' class="input" type="text" placeholder="10000" >
                     </div>
                 </div>
 
@@ -32,6 +32,13 @@
                     <label class="label">Descripcion</label>
                     <div class="control">
                         <textarea name='description' class="textarea" placeholder="..."></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Imagen</label>
+                    <div class="control">
+                        <input name='image' class="input" type="file">
                     </div>
                 </div>
 

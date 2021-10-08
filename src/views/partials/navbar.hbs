@@ -1,0 +1,70 @@
+<nav class='navbar navbar-principal' role='navigation' aria-label='main navigation'>
+            <div class='navbar-brand'>
+                <a class='navbar-item' href='/'>
+                    <h1 class="title is-4">Kontroll</h1>
+                </a>
+
+                <a role='button' class='navbar-burger' aria-label='menu' aria-expanded='false'data-target='navbarBasicExample' >
+                    <span aria-hidden='true'></span>
+                    <span aria-hidden='true'></span>
+                    <span aria-hidden='true'></span>
+                </a>
+            </div>
+
+            <div id='navbarBasicExample' class='navbar-menu'>
+                <div class='navbar-start'>
+                    <a href="/" class='navbar-item'> Home </a>
+
+                    <div class='navbar-item has-dropdown is-hoverable'>
+                        <a class='navbar-link'>
+                            Productos
+                        </a>
+
+                        <div class='navbar-dropdown'>
+                            <a href="/products" class='navbar-item'>
+                                Ver todos
+                            </a>
+                            <a href="products/addProduct" class='navbar-item'>
+                                Agregar
+                            </a>
+                            <hr class='navbar-divider' />
+                            <a class='navbar-item'>
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class='navbar-item has-dropdown is-hoverable'>
+                        <a class='navbar-link'>
+                            Tienda
+                        </a>
+
+                        <div class='navbar-dropdown'>
+                            <a href="/store/list" class='navbar-item'>
+                                Ver todos
+                            </a>
+
+                            <hr class='navbar-divider' />
+                            <a class='navbar-item'>
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='navbar-end'>
+                    <div class='navbar-item'>
+                        <div class='buttons'>
+                            {{#if id}}
+                            <a href="/users/logout" class='button is-danger is-outlined'>Cerrar sesion </a>
+                            {{else}}
+                            <a href="/users/signup" class='button is-primary'>
+                                <strong>Registrarse</strong>
+                            </a>
+                            <a href="/users/signin" class='button is-light'>Ingresar </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>

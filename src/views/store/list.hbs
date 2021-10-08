@@ -1,5 +1,6 @@
+
 {{#if products}}
-<div class='columns tile is-ancestor is-multiline is-mobile'>
+<div class='columns tile is-ancestor is-multiline is-mobile' id="shopProducts">
     {{#each products}}
         <div class='column tile is-parent is-12-mobile is-6-tablet is-3-desktop is-2-widescreen'>
             <div class='card tile is-child'>
@@ -22,16 +23,20 @@
                         ${{price}}
                         <br />
                         <p>{{description}}</p>
-                        {{!-- <br />
-                        <time datetime='2016-1-1'>{{date}}</time> --}}
-                        <div class="buttons is-right mt-3">
-                            <form action="/products/delete/{{_id}}?_method=DELETE" method="POST" class="hiddenForm">
-                                <input type="hidden" value="DELETE" name="_method">
-                                <button type="submit" class="button is-danger is-small ">Eliminar</button>
-                            </form>
-                            <a href="/products/edit/{{_id}}" class="button is-blue is-small is-pulled-right">Editar</a>
-                        </div>
                     </div>
+
+                    {{!-- {{#if orderId}} --}}
+                    {{!-- <form action="/orders/addtoorder/{{_id}}" method="POST">
+                        <input class="input is-primary" type="number" placeholder="Cantidad" value="1">
+                        <div class="buttons">
+                            <button onclick="addCart()" type="submit" id="{{_id}}" class="button is-blue is-fullwidth">Agregar</button>
+                        </div>
+                    </form> --}}
+
+                    <button id="{{_id}}" class="button addBtn is-blue is-fullwidth">Agregar</button>
+                    {{!-- {{/if}} --}}
+
+
                 </div>
             </div>
         </div>
