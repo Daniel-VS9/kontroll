@@ -53,3 +53,22 @@ footer  i {
     width: auto;
     max-height: 230px;
 }
+
+.card-product-description {
+    height: 1.5rem;
+    overflow: hidden;
+    transition: height .3s ease-in .3s;
+}
+
+.card-product-description:hover {
+    height: auto;
+    overflow: hidden;
+}
+
+.card-p-empy-description {
+    height: 1.5rem;
+}
+
+tr > th > .has-text-primary {
+    font-size: larger;
+}

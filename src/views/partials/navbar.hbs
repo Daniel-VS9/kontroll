@@ -27,14 +27,10 @@
                             <a href="products/addProduct" class='navbar-item'>
                                 Agregar
                             </a>
-                            <hr class='navbar-divider' />
-                            <a class='navbar-item'>
-                                Report an issue
-                            </a>
                         </div>
                     </div>
 
-                    <div class='navbar-item has-dropdown is-hoverable'>
+                    {{!-- <div class='navbar-item has-dropdown is-hoverable'>
                         <a class='navbar-link'>
                             Tienda
                         </a>
@@ -43,20 +39,17 @@
                             <a href="/store/list" class='navbar-item'>
                                 Ver todos
                             </a>
-
-                            <hr class='navbar-divider' />
-                            <a class='navbar-item'>
-                                Report an issue
-                            </a>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    <a href="/store/list" class='navbar-item'>Tienda</a>
                 </div>
 
                 <div class='navbar-end'>
                     <div class='navbar-item'>
                         <div class='buttons'>
                             {{#if id}}
-                            <a href="/users/logout" class='button is-danger is-outlined'>Cerrar sesion </a>
+                            <a href="/users/logout" id="{{id}}" class='button close-session is-danger is-outlined'>Cerrar sesion </a>
                             {{else}}
                             <a href="/users/signup" class='button is-primary'>
                                 <strong>Registrarse</strong>

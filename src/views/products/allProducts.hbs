@@ -21,7 +21,11 @@
                     <div class='content'>
                         ${{price}}
                         <br />
-                        <p>{{description}}</p>
+                        {{#if description}}
+                        <p class="card-product-description">{{description}}</p>
+                        {{else}}
+                        <div class="card-p-empy-description"></div>
+                        {{/if}}
                         {{!-- <br />
                         <time datetime='2016-1-1'>{{date}}</time> --}}
                         <div class="buttons is-right mt-3">

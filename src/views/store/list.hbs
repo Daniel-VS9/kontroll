@@ -1,60 +1,119 @@
 
-{{#if products}}
-<div class='columns tile is-ancestor is-multiline is-mobile' id="shopProducts">
-    {{#each products}}
-        <div class='column tile is-parent is-12-mobile is-6-tablet is-3-desktop is-2-widescreen'>
-            <div class='card tile is-child'>
-                <div class='card-image'>
-                    <figure class='image is-flex is-justify-content-center'>
-                        <img
-                            src='{{imagePath}}'
-                            alt='{{name}}'
-                        />
-                    </figure>
-                </div>
-                <div class='card-content'>
-                    <div class='media'>
-                        <div class='media-content'>
-                            <p class='title is-4'>{{name}}</p>
-                        </div>
-                    </div>
-
-                    <div class='content'>
-                        ${{price}}
-                        <br />
-                        <p>{{description}}</p>
-                    </div>
-
-                    {{!-- {{#if orderId}} --}}
-                    {{!-- <form action="/orders/addtoorder/{{_id}}" method="POST">
-                        <input class="input is-primary" type="number" placeholder="Cantidad" value="1">
-                        <div class="buttons">
-                            <button onclick="addCart()" type="submit" id="{{_id}}" class="button is-blue is-fullwidth">Agregar</button>
-                        </div>
-                    </form> --}}
-
-                    <button id="{{_id}}" class="button addBtn is-blue is-fullwidth">Agregar</button>
-                    {{!-- {{/if}} --}}
-
-
-                </div>
-            </div>
-        </div>
-    {{/each}}
+<div class="tabs is-centered">
+  <ul>
+    <li class="is-active" data-target="products-view">
+      <a>
+        <span class="icon is-small"><i class="fas fa-list-ul" aria-hidden="true"></i></span>
+        <span>Productos</span>
+      </a>
+    </li>
+    <li data-target="cart-view">
+      <a>
+        <span class="icon is-small"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>
+        <span>Pedido</span>
+      </a>
+    </li>
+  </ul>
 </div>
-{{else}}
-<div class="columns is-centered">
-    <div class='column is-narrow'>
-        <div class='card'>
-            <div class='card-content'>
-                <div class='media'>
-                    <div class='media-content has-text-centered'>
-                        <p class='title is-4'>No tienes productos aun</p>
-                        <a href='/products/addProduct' class='button is-primary is-outlined' >Agregar producto</a>
+
+<div id="tab-content">
+
+    <div id="products-view">
+        {{#if products}}
+        <div class='columns tile is-ancestor is-multiline is-mobile' id="shopProducts">
+            {{#each products}}
+                <div class='column tile is-parent is-12-mobile is-6-tablet is-3-desktop is-2-widescreen'>
+                    <div class='card tile is-child'>
+                        <div class='card-image'>
+                            <figure class='image is-flex is-justify-content-center'>
+                                <img
+                                    src='{{imagePath}}'
+                                    alt='{{name}}'
+                                />
+                            </figure>
+                        </div>
+                        <div class='card-content'>
+                            <div class='media'>
+                                <div class='media-content'>
+                                    <p class='title card-product-name is-4'>{{name}}</p>
+                                </div>
+                            </div>
+
+                            <div class='content'>
+                                <span class="card-product-price">${{price}}</span>
+                                <br />
+                                {{#if description}}
+                                <p class="card-product-description">{{description}}</p>
+                                {{else}}
+                                <div class="card-p-empy-description"></div>
+                                {{/if}}
+                            </div>
+
+                            {{!-- {{#if orderId}} --}}
+                            {{!-- <form action="/orders/addtoorder/{{_id}}" method="POST">
+                                <input class="input is-primary" type="number" placeholder="Cantidad" value="1">
+                                <div class="buttons">
+                                    <button onclick="addCart()" type="submit" id="{{_id}}" class="button is-blue is-fullwidth">Agregar</button>
+                                </div>
+                            </form> --}}
+
+                            <button id="{{_id}}" class="button addBtn is-blue is-fullwidth">Agregar</button>
+                            {{!-- {{/if}} --}}
+
+
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="columns is-centered">
+            <div class='column is-narrow'>
+                <div class='card'>
+                    <div class='card-content'>
+                        <div class='media'>
+                            <div class='media-content has-text-centered'>
+                                <p class='title is-4'>No tienes productos aun</p>
+                                <a href='/products/addProduct' class='button is-primary is-outlined' >Agregar producto</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{/if}}
     </div>
+
+    <div id="cart-view" class="is-hidden">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-12-mobile is-12-tablet  is-narrow-desktop">
+                <div class="box">
+                    <div class="table-container">
+                        <table class="table is-fullwidth  is-striped">
+                            <thead class="has-background-primary-light">
+                                <tr>
+                                    <th class=""><span class="has-text-primary">Producto</span></th>
+                                    <th class="has-text-primary"><span class="has-text-primary">Precio</span></th>
+                                    <th class="has-text-primary"><span class="has-text-primary">Cantidad</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="cart-table-items">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="columns mx-4 is-multiline is-mobile">
+                        <div class="column is-flex is-12-mobile is-justify-content-flex-end">
+                            <h4 class="itemCartTotal subtitle is-4">Total: 0</h4>
+                        </div>
+                        <div class="column is-flex is-justify-content-flex-end">
+                            <button class="button is-primary" id="saveOrder">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
-{{/if}}

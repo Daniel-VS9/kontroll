@@ -4,22 +4,27 @@ const router = express.Router()
 const Product = require('../models/Product')
 const Order = require('../models/Order')
 
-router.post('/neworder', (req, res) => { // TODO authenticate
-    const order = new Order({ userId:req.userId })
-    req.orderId = JSON.stringify(order._id).substring(1,-1)
-    console.log(order) // TODO delete this line
-    // res.send(`${order._id}`)
-    res.redirect('/store/list')
-})
+const {isAuthenticated} = require('../helpers/auth')
 
-router.post('/addtoorder/:id', async (req, res) => { // TODO authenticate
-    const productId = req.params.id
-    const { quantity } = req.body
+router.post('/addorder', isAuthenticated, async (req, res) => {
+    
+    const products = req.body.cart
+    let total = 0;
 
-    if(typeof quantity !== Number || quantity < 1) return res.redirect('/store/list')
+    try {
+        products.forEach(product => {
+            total += Number(product.price) * Number(product.quantity)
+            // product.imagePath = await Product.findById(product.id).imagePath // Need promise all
+        })
+    
+        const newOrder = new Order({products, total, userId:req.userId})
+        await newOrder.save()
 
-    const product = await Product.findById(productId)
-    const order = Order.find({ userId,  })
+        res.sendStatus(200)
+    } catch (error) {
+        console.error(error)
+        res.sendStatus(500)
+    }
 
 })
 
