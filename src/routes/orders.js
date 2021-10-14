@@ -1,10 +1,17 @@
 const express = require('express')
+const moment = require('moment')
 const router = express.Router()
 
 const Product = require('../models/Product')
 const Order = require('../models/Order')
 
 const {isAuthenticated} = require('../helpers/auth')
+
+// All orders for a user
+router.get('/all', isAuthenticated, async (req, res) => {
+    const orders = await Order.find({userId:req.userId})
+    res.json(orders)
+})
 
 router.post('/addorder', isAuthenticated, async (req, res) => {
     
@@ -26,6 +33,35 @@ router.post('/addorder', isAuthenticated, async (req, res) => {
         res.sendStatus(500)
     }
 
+})
+
+router.get('/lastsdays', isAuthenticated, async (req, res) => {
+    const today = moment();
+    const startDay = today.subtract(7, 'days')
+
+    const orders = await Order.find({userId:req.userId, date:{$gte:startDay}}).exec();
+    res.sendStatus(200)
+})
+
+router.get('/bydate/:date', isAuthenticated, async (req, res) => {
+    const {date} = req.params
+    let total = 0
+
+    try {
+        const orders = await Order.find({userId:req.userId, date:{$gte:date}}).exec();
+
+        const numberOfOrders = orders.length
+
+        orders.map(order => {
+            total += order.total
+        })
+
+        res.json({ orders, total, numberOfOrders })
+
+    } catch (error) {
+        res.sendStatus(500)
+        console.log(error)
+    }
 })
 
 module.exports = router

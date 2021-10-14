@@ -10,4 +10,8 @@ router.get('/list', isAuthenticated, async (req, res) => {
     res.render('store/list', {products, id:req.userId, orderId:req.orderId});
 });
 
+router.get('/dashboard', isAuthenticated, (req, res) => {
+    res.render('dashboard/dashboard', {id:req.userId})
+})
+
 module.exports = router;

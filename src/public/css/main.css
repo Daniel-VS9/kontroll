@@ -72,3 +72,22 @@ footer  i {
 tr > th > .has-text-primary {
     font-size: larger;
 }
+
+
+/* dashboard */
+
+.show-info {
+    background-color: #794BDE;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.show-info > span {
+    color:#fff;  
+}
+
+canvas {
+    max-height: 450px;
+}
